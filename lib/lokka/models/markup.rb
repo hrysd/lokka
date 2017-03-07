@@ -1,4 +1,11 @@
 module Markup
+  require 'rouge'
+  require 'rouge/plugins/redcarpet'
+
+  class RedcarpetWithRougeRenderHTML < Redcarpet::Render::HTML
+    include Rouge::Plugins::Redcarpet
+  end
+
   class << self
     attr_accessor :engine_list
 
@@ -27,13 +34,10 @@ module Markup
       ['redcarpet', 'Markdown (redcarpet)',
         lambda do |text|
           Redcarpet::Markdown.new(
-            Redcarpet::Render::HTML,
-            :no_intra_emphasis   => true,
+            RedcarpetWithRougeRenderHTML.new(escape_html:true),
+            disable_indented_code_blocks: true,
             :fenced_code_blocks  => true,
-            :autolink            => true,
-            :tables              => true,
-            :superscript         => true,
-            :space_after_headers => true
+            :autolink            => true
           ).render(text)
         end]
   ]

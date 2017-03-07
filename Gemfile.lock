@@ -125,6 +125,7 @@ GEM
       rack (>= 1.0)
       rack-test (>= 0.5)
       ripl (>= 0.3.5)
+    rouge (2.0.7)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -225,6 +226,7 @@ DEPENDENCIES
   rake
   redcarpet
   request_store
+  rouge
   rspec (= 2.14.1)
   sass (~> 3.2.12)
   simplecov
